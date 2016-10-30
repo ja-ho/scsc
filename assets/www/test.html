@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *"/>
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+    * Enable inline JS: add 'unsafe-inline' to default-src
+    * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+  -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <title>Where shall we go?</title>
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.mobile-1.4.0-rc.1.js"></script>
+
+</head>
+
+<div data-role="page">
+
+    <div data-role="panel" id="panel" data-position="right" data-theme="a" data-display="push"></div>
+
+    <div data-role="header">
+        <a data-iconpos="notext" data-role="button" data-icon="home" title="Home">Home</a>
+        <h1>where shall we go?</h1>
+        <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
+    </div>
+
+    <div data-role="content" role="main">
+
+        <br>
+        <div>
+            <div data-role="collapsible">
+                <h3>로그인</h3>
+
+                <div>
+          <span>
+            <input type="text" id="name" placeholder="아이디">
+            <input type="password" id="passwd" placeholder="패스워드">
+          </span>
+                </div>
+            </div>
+            <div data-role="collapsible">
+                <h3>장소</h3>
+                <h3>1~5점 사이에서 입력해주세요.</h3>
+
+                <div class="row">
+                    <p class="checkText">양식</p>
+                    <p class="range-field">
+                        <input type="range" id="check1" min="1" max="5" onchange="showVal(this.value)"/>
+                    </p>
+                </div>
+                <div class="row">
+                    <p class="checkText">한식</p>
+                    <p class="range-field">
+                        <input type="range" id="check2" min="1" max="5" onchange="showVal(this.value)"/>
+                    </p>
+                </div>
+                <div class="row">
+                    <p class="checkText">중식</p>
+                    <p class="range-field">
+                        <input type="range" id="check3" min="1" max="5" onchange="showVal(this.value)"/>
+                    </p>
+                </div>
+                <div class="row">
+                    <p class="checkText">일식</p>
+                    <p class="range-field">
+                        <input type="range" id="check4" min="1" max="5" onchange="showVal(this.value)"/>
+                    </p>
+                </div>
+            </div>
+            <div data-role="collapsible">
+                <h3>시간</h3>
+                <div class="row">
+                    <p class="checkText">일정1 시작</p>
+                    <input id="start1" type="time">
+                </div>
+                <div class="row">
+                    <p class="checkText">일정1 끝</p>
+                    <input id="end1" type="time">
+                </div>
+                <div class="row">
+                    <p class="checkText">일정1 시작</p>
+                    <input id="start2" type="time">
+                </div>
+                <div class="row">
+                    <p class="checkText">일정1 끝</p>
+                    <input id="end2" type="time">
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="button" id="saveBtn">Save</button>
+        </div>
+
+        <div>
+            <ul id="userList">
+
+            </ul>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div id="highlight"> </div>
+
+
+<script type="text/javascript" src="cordova.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+<script type="text/javascript" src="js/userModule.js"></script>
+<script type="text/javascript">
+  // Wait for device API libraries to load
+  console.log("starts");
+
+  document.addEventListener("deviceready", onDeviceReady, false);
+
+  // device APIs are available
+  //
+  function onDeviceReady() {
+    // Throw an error if no update is received every 30 seconds
+    console.log("onDeviceReady");
+
+  }
+
+  function goPage() {
+    location.href="info.html";
+  }
+
+   // onSuccess Geolocation
+  //
+
+
+  // onError Callback receives a PositionError object
+  //
+  function onError(error) {
+    alert('code: '    + error.code    + '\n' +
+    'message: ' + error.message + '\n');
+  }
+
+  $("#saveBtn").click(function() {
+
+    var myUser = UserModule.myUser($("#name").val(), $("#passwd").val(), $("#check1").val(), $("#check2").val(), $("#check3").val(), $("#check4").val(), $("#start1").val(), $("#end1").val(), $("#start2").val(), $("#end2").val() );
+    UserModule.add(myUser);
+    alert("why");
+    renderUser();
+
+  });
+  UserModule.init();
+  var newUser = UserModule.generateUser();
+  UserModule.add(newUser);
+
+  function showVal(newVal){
+  document.getElementById("valBox").innerHTML=newVal;
+  }
+
+  var renderUser = function()
+  {
+    var ulList = document.getElementById("userList");
+
+    var userInfo = UserModule.users;
+    alert(0);
+
+    while(ulList.firstChild){
+        ulList.removeChild(ulList.firstChild);
+        alert(1);
+    }
+    var saveLi = document.createElement("Li");
+    saveLi.innerHTML="users";
+    ulList.appendChild(saveLi);
+    if(userInfo){
+    for(var i = 0; i< userInfo.length; i++)
+    {
+        alert(3);
+        var xx = userInfo[i];
+        var newLi = document.createElement("Li");
+        ulList.appendChild(newLi);
+        newLi.innerHTML = xx.name;
+    }
+
+  }
+
+  </script>
+</html>
+
+
+
