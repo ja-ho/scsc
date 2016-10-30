@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\home\\WhereAmI_firebase\\WhereAmI_firebase\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\icon.png",
+        "source": "C:\\home\\WhereAmI_firebase\\WhereAmI_firebase\\platforms\\android\\res\\drawable-xxhdpi\\icon.png"
+    },
+    {
+        "merged": "C:\\home\\WhereAmI_firebase\\WhereAmI_firebase\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_action_remove.png",
+        "source": "C:\\home\\WhereAmI_firebase\\WhereAmI_firebase\\platforms\\android\\res\\drawable-xxhdpi\\ic_action_remove.png"
+    },
+    {
+        "merged": "C:\\home\\WhereAmI_firebase\\WhereAmI_firebase\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_action_next_item.png",
+        "source": "C:\\home\\WhereAmI_firebase\\WhereAmI_firebase\\platforms\\android\\res\\drawable-xxhdpi\\ic_action_next_item.png"
+    },
+    {
+        "merged": "C:\\home\\WhereAmI_firebase\\WhereAmI_firebase\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_action_previous_item.png",
+        "source": "C:\\home\\WhereAmI_firebase\\WhereAmI_firebase\\platforms\\android\\res\\drawable-xxhdpi\\ic_action_previous_item.png"
+    }
+]

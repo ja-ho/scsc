@@ -1,0 +1,7 @@
+#Wed Oct 26 19:45:35 KST 2016
+base.0=C\:\\home\\WhereAmI_firebase\\WhereAmI_firebase\\platforms\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_ff9f5000516d285a978d739a0bfcef7e5f4ee3b9
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\home\\WhereAmI_firebase\\WhereAmI_firebase\\platforms\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_4805b9d21e2dc94f065bb7d96ee93d279a9d8fd1\\classes.dex
+base.1=C\:\\home\\WhereAmI_firebase\\WhereAmI_firebase\\platforms\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_4805b9d21e2dc94f065bb7d96ee93d279a9d8fd1
+file.0=C\:\\home\\WhereAmI_firebase\\WhereAmI_firebase\\platforms\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_ff9f5000516d285a978d739a0bfcef7e5f4ee3b9\\classes.dex
